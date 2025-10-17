@@ -1,0 +1,59 @@
+// Laboratorio: Ordenar 3 números aleatorios
+// Nombre: Adianed M. Berríos
+// Fecha: 17-10-2025
+// Colaboraciones: Ninguna
+//
+// Descripción:
+// Este programa genera tres números enteros aleatorios entre 0 y 100 (inclusive).
+// Luego imprime los números generados y los muestra en orden descendente.
+// Se utiliza srand(time(0)) para inicializar la semilla del generador
+// y asegurar que la secuencia cambie en cada ejecución.
+
+#include <iostream>
+#include <cstdlib>  // rand(), srand()
+#include <ctime>    // time()
+
+using namespace std;
+
+int main() {
+    // Inicializar la semilla del generador de números aleatorios
+    // time(0) devuelve el número de segundos desde el 1 de enero de 1970
+    // Al usarlo como seed, la secuencia de rand() varía entre ejecuciones.
+    srand(time(0));
+
+    // Nombres de variables descriptivos
+    int numero1 = rand() % 101; // rango 0..100
+    int numero2 = rand() % 101; // rango 0..100
+    int numero3 = rand() % 101; // rango 0..100
+
+    // Mostrar los números aleatorios generados (no ordenados)
+    cout << "Números aleatorios generados: "
+         << numero1 << ", " << numero2 << ", " << numero3 << endl;
+
+    // Ordenar de mayor a menor usando comparaciones simples y swaps
+    // Método: asegurar que numero1 sea el mayor comparándolo con los otros,
+    // luego asegurar que numero2 >= numero3.
+    if (numero1 < numero2) {
+        int temp = numero1;
+        numero1 = numero2;
+        numero2 = temp;
+    }
+
+    if (numero1 < numero3) {
+        int temp = numero1;
+        numero1 = numero3;
+        numero3 = temp;
+    }
+
+    if (numero2 < numero3) {
+        int temp = numero2;
+        numero2 = numero3;
+        numero3 = temp;
+    }
+
+    // Mostrar en orden descendente usando >= para que coincida con el formato requerido
+    cout << "Orden descendiente: "
+         << numero1 << " >= " << numero2 << " >= " << numero3 << endl;
+
+    return 0;
+}
